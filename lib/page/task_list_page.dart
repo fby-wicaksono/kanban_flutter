@@ -5,6 +5,7 @@ import 'package:kanban_flutter_sample/data/drift_client.dart';
 import 'package:kanban_flutter_sample/data/entity/tasks.dart';
 import 'package:kanban_flutter_sample/provider/task_list_provider.dart';
 import 'package:kanban_flutter_sample/routing/app_router.gr.dart';
+import 'package:kanban_flutter_sample/widget/task_detail.dart';
 import 'package:kanban_flutter_sample/widget/task_list_item.dart';
 
 class TaskListPage extends ConsumerStatefulWidget {
@@ -35,7 +36,7 @@ class _TaskListPageState extends ConsumerState<TaskListPage> {
               physics: const BouncingScrollPhysics(),
               itemBuilder: (_, index) => TaskListItem(
                 task: taskList[index],
-                onItemPressed: () => _pushToTaskDetailPage(taskList[index]),
+                onItemPressed: () => _showDetailBottomSheet(taskList[index]),
               ),
               itemCount: taskList.length,
             ),
@@ -45,8 +46,21 @@ class _TaskListPageState extends ConsumerState<TaskListPage> {
     );
   }
 
+  void _showDetailBottomSheet(Task task) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(10.0),
+          topRight: Radius.circular(10.0),
+        ),
+      ),
+      builder: (context) => TaskDetail(task: task),
+    );
+  }
+
   void _pushToTaskDetailPage(Task task) {
-    context.router.push(TaskDetailRoute(task: task));
+    context.router.push(TaskEditRoute(task: task));
   }
 }
 

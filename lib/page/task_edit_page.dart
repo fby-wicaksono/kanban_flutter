@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:kanban_flutter_sample/data/drift_client.dart';
-import 'package:kanban_flutter_sample/data/entity/tasks.dart';
-import 'package:kanban_flutter_sample/notifier/task_detail_state.dart';
-import 'package:kanban_flutter_sample/provider/task_detail_provider.dart';
+import 'package:kanban_flutter_sample/notifier/edit_task_state.dart';
+import 'package:kanban_flutter_sample/provider/edit_task_provider.dart';
 import 'package:kanban_flutter_sample/provider/task_list_provider.dart';
 import 'package:kanban_flutter_sample/util/app_helper.dart';
-import 'package:kanban_flutter_sample/widget/general_input_label.dart';
 import 'package:kanban_flutter_sample/widget/general_text_input.dart';
 
-class TaskDetailPage extends ConsumerStatefulWidget {
-  const TaskDetailPage({
+class TaskEditPage extends ConsumerStatefulWidget {
+  const TaskEditPage({
     Key? key,
     this.task,
   }) : super(key: key);
@@ -23,7 +21,7 @@ class TaskDetailPage extends ConsumerStatefulWidget {
   ConsumerState createState() => _AddTaskPageState();
 }
 
-class _AddTaskPageState extends ConsumerState<TaskDetailPage> {
+class _AddTaskPageState extends ConsumerState<TaskEditPage> {
   final titleController = TextEditingController();
   final labelController = TextEditingController();
   final dateController = TextEditingController();
@@ -41,14 +39,9 @@ class _AddTaskPageState extends ConsumerState<TaskDetailPage> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      titleController.text = widget.task?.title ?? '';
-      labelController.text = widget.task?.label ?? '';
-      descriptionController.text = widget.task?.description ?? '';
-
-      ref.read(selectedDueDateProvider.notifier).state = widget.task?.endDate;
-      ref.read(selectedStatusProvider.notifier).state = widget.task?.status ?? TaskStatus.toDo;
-    });
+    titleController.text = widget.task?.title ?? '';
+    labelController.text = widget.task?.label ?? '';
+    descriptionController.text = widget.task?.description ?? '';
   }
 
   @override
@@ -64,26 +57,20 @@ class _AddTaskPageState extends ConsumerState<TaskDetailPage> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    final selectedStatus = ref.watch(selectedStatusProvider);
-
-    ref.listen(selectedDueDateProvider, (_, updatedDueDate) {
-      dateController.text = _formattedDateText(updatedDueDate);
-    });
-
-    ref.listen(taskDetailNotifierProvider, (_, state) {
-      if (state is TaskDetailStateFailed) {
+    ref.listen(editTaskNotifierProvider, (_, state) {
+      if (state is EditTaskStateFailed) {
         ScaffoldMessenger.of(context).showSnackBar(generalAppSnackbar(message: state.errorMessage));
-      } else if (state is TaskDetailStatesuccessAdded) {
+      } else if (state is EditTaskStatesuccessAdded) {
         ScaffoldMessenger.of(context).showSnackBar(generalAppSnackbar(message: 'Task Successfully Added'));
 
         ref.read(taskNotifierProvider.notifier).addNewTask(task: state.task);
         context.router.pop();
-      } else if (state is TaskDetailStatesuccessEdited) {
+      } else if (state is EditTaskStatesuccessEdited) {
         ScaffoldMessenger.of(context).showSnackBar(generalAppSnackbar(message: 'Task Successfully Edited'));
         ref.read(taskNotifierProvider.notifier).editTask(state.task);
 
         context.router.pop();
-      } else if (state is TaskDetailStatesuccessDeleted) {
+      } else if (state is EditTaskStatesuccessDeleted) {
         ScaffoldMessenger.of(context).showSnackBar(generalAppSnackbar(message: 'Task Successfully Deleted'));
         ref.read(taskNotifierProvider.notifier).deleteTask(state.task);
 
@@ -128,26 +115,7 @@ class _AddTaskPageState extends ConsumerState<TaskDetailPage> {
               controller: labelController,
               maxLength: 20,
             ),
-            const SizedBox(height: 20.0),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: GeneralTextInput(
-                    label: 'Due Date',
-                    controller: dateController,
-                    isReadOnly: true,
-                  ),
-                ),
-                IconButton(
-                  onPressed: _selectDueDate,
-                  icon: const Icon(
-                    Icons.calendar_today_sharp,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 15.0),
             GeneralTextInput(
               label: 'Description',
               controller: descriptionController,
@@ -155,9 +123,6 @@ class _AddTaskPageState extends ConsumerState<TaskDetailPage> {
               maxLines: 4,
               inputStyle: textTheme.bodyLarge,
             ),
-            const SizedBox(height: 20.0),
-            const GeneralInputLabel(label: 'Status'),
-            StatusOptions(selectedStatus: selectedStatus),
             const SizedBox(height: 40.0),
             if (_isCreateNewTask)
               ElevatedButton(
@@ -176,80 +141,28 @@ class _AddTaskPageState extends ConsumerState<TaskDetailPage> {
   }
 
   void addNewTask() {
-    ref.read(taskDetailNotifierProvider.notifier).addTaskToDatabase(
+    ref.read(editTaskNotifierProvider.notifier).addTaskToDatabase(
           title: titleController.text,
           label: labelController.text,
           description: descriptionController.text,
-          status: ref.read(selectedStatusProvider.notifier).state,
-          endDate: ref.read(selectedDueDateProvider.notifier).state,
         );
   }
 
   void editTask() {
     if (widget.task != null) {
-      ref.read(taskDetailNotifierProvider.notifier).editTask(
+      ref.read(editTaskNotifierProvider.notifier).editTask(
             id: widget.task!.id,
             title: titleController.text,
             label: labelController.text,
             description: descriptionController.text,
-            status: ref.read(selectedStatusProvider.notifier).state,
-            endDate: ref.read(selectedDueDateProvider.notifier).state,
+            status: widget.task!.status,
           );
     }
   }
 
   void deleteTask() {
     if (widget.task != null) {
-      ref.read(taskDetailNotifierProvider.notifier).deleteTask(widget.task!);
+      ref.read(editTaskNotifierProvider.notifier).deleteTask(widget.task!);
     }
-  }
-
-  void _selectDueDate() async {
-    final selectedDate = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2050),
-    );
-
-    if (selectedDate != null) {
-      ref.read(selectedDueDateProvider.notifier).state = selectedDate;
-    }
-  }
-
-  String _formattedDateText(DateTime? dateTime) {
-    return dateTime != null ? DateFormat.yMMMMd().format(dateTime) : '';
-  }
-}
-
-class StatusOptions extends ConsumerWidget {
-  const StatusOptions({
-    Key? key,
-    required this.selectedStatus,
-  }) : super(key: key);
-
-  final TaskStatus selectedStatus;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Wrap(
-      spacing: 10.0,
-      children: TaskStatus.values
-          .map(
-            (status) => ChoiceChip(
-              label: Text(status.statusName),
-              shape: const StadiumBorder(
-                side: BorderSide(
-                  color: Colors.blue,
-                ),
-              ),
-              backgroundColor: Colors.transparent,
-              selectedColor: Colors.blue.withOpacity(0.4),
-              selected: selectedStatus == status,
-              onSelected: (selected) => selected ? ref.read(selectedStatusProvider.notifier).state = status : null,
-            ),
-          )
-          .toList(),
-    );
   }
 }

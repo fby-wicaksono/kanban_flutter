@@ -20,9 +20,7 @@ mixin _$TaskDetailState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Task task) successAdded,
-    required TResult Function(Task task) successEdited,
-    required TResult Function(Task task) successDeleted,
+    required TResult Function(Task task) success,
     required TResult Function(String errorMessage) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,9 +28,7 @@ mixin _$TaskDetailState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Task task)? successAdded,
-    TResult? Function(Task task)? successEdited,
-    TResult? Function(Task task)? successDeleted,
+    TResult? Function(Task task)? success,
     TResult? Function(String errorMessage)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,9 +36,7 @@ mixin _$TaskDetailState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Task task)? successAdded,
-    TResult Function(Task task)? successEdited,
-    TResult Function(Task task)? successDeleted,
+    TResult Function(Task task)? success,
     TResult Function(String errorMessage)? failed,
     required TResult orElse(),
   }) =>
@@ -51,10 +45,7 @@ mixin _$TaskDetailState {
   TResult map<TResult extends Object?>({
     required TResult Function(TaskDetailStateInitial value) initial,
     required TResult Function(TaskDetailStateLoading value) loading,
-    required TResult Function(TaskDetailStatesuccessAdded value) successAdded,
-    required TResult Function(TaskDetailStatesuccessEdited value) successEdited,
-    required TResult Function(TaskDetailStatesuccessDeleted value)
-        successDeleted,
+    required TResult Function(TaskDetailStateSuccess value) success,
     required TResult Function(TaskDetailStateFailed value) failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,9 +53,7 @@ mixin _$TaskDetailState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TaskDetailStateInitial value)? initial,
     TResult? Function(TaskDetailStateLoading value)? loading,
-    TResult? Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult? Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult? Function(TaskDetailStatesuccessDeleted value)? successDeleted,
+    TResult? Function(TaskDetailStateSuccess value)? success,
     TResult? Function(TaskDetailStateFailed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -72,9 +61,7 @@ mixin _$TaskDetailState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskDetailStateInitial value)? initial,
     TResult Function(TaskDetailStateLoading value)? loading,
-    TResult Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult Function(TaskDetailStatesuccessDeleted value)? successDeleted,
+    TResult Function(TaskDetailStateSuccess value)? success,
     TResult Function(TaskDetailStateFailed value)? failed,
     required TResult orElse(),
   }) =>
@@ -139,9 +126,7 @@ class _$TaskDetailStateInitial implements TaskDetailStateInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Task task) successAdded,
-    required TResult Function(Task task) successEdited,
-    required TResult Function(Task task) successDeleted,
+    required TResult Function(Task task) success,
     required TResult Function(String errorMessage) failed,
   }) {
     return initial();
@@ -152,9 +137,7 @@ class _$TaskDetailStateInitial implements TaskDetailStateInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Task task)? successAdded,
-    TResult? Function(Task task)? successEdited,
-    TResult? Function(Task task)? successDeleted,
+    TResult? Function(Task task)? success,
     TResult? Function(String errorMessage)? failed,
   }) {
     return initial?.call();
@@ -165,9 +148,7 @@ class _$TaskDetailStateInitial implements TaskDetailStateInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Task task)? successAdded,
-    TResult Function(Task task)? successEdited,
-    TResult Function(Task task)? successDeleted,
+    TResult Function(Task task)? success,
     TResult Function(String errorMessage)? failed,
     required TResult orElse(),
   }) {
@@ -182,10 +163,7 @@ class _$TaskDetailStateInitial implements TaskDetailStateInitial {
   TResult map<TResult extends Object?>({
     required TResult Function(TaskDetailStateInitial value) initial,
     required TResult Function(TaskDetailStateLoading value) loading,
-    required TResult Function(TaskDetailStatesuccessAdded value) successAdded,
-    required TResult Function(TaskDetailStatesuccessEdited value) successEdited,
-    required TResult Function(TaskDetailStatesuccessDeleted value)
-        successDeleted,
+    required TResult Function(TaskDetailStateSuccess value) success,
     required TResult Function(TaskDetailStateFailed value) failed,
   }) {
     return initial(this);
@@ -196,9 +174,7 @@ class _$TaskDetailStateInitial implements TaskDetailStateInitial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TaskDetailStateInitial value)? initial,
     TResult? Function(TaskDetailStateLoading value)? loading,
-    TResult? Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult? Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult? Function(TaskDetailStatesuccessDeleted value)? successDeleted,
+    TResult? Function(TaskDetailStateSuccess value)? success,
     TResult? Function(TaskDetailStateFailed value)? failed,
   }) {
     return initial?.call(this);
@@ -209,9 +185,7 @@ class _$TaskDetailStateInitial implements TaskDetailStateInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskDetailStateInitial value)? initial,
     TResult Function(TaskDetailStateLoading value)? loading,
-    TResult Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult Function(TaskDetailStatesuccessDeleted value)? successDeleted,
+    TResult Function(TaskDetailStateSuccess value)? success,
     TResult Function(TaskDetailStateFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -266,9 +240,7 @@ class _$TaskDetailStateLoading implements TaskDetailStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Task task) successAdded,
-    required TResult Function(Task task) successEdited,
-    required TResult Function(Task task) successDeleted,
+    required TResult Function(Task task) success,
     required TResult Function(String errorMessage) failed,
   }) {
     return loading();
@@ -279,9 +251,7 @@ class _$TaskDetailStateLoading implements TaskDetailStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Task task)? successAdded,
-    TResult? Function(Task task)? successEdited,
-    TResult? Function(Task task)? successDeleted,
+    TResult? Function(Task task)? success,
     TResult? Function(String errorMessage)? failed,
   }) {
     return loading?.call();
@@ -292,9 +262,7 @@ class _$TaskDetailStateLoading implements TaskDetailStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Task task)? successAdded,
-    TResult Function(Task task)? successEdited,
-    TResult Function(Task task)? successDeleted,
+    TResult Function(Task task)? success,
     TResult Function(String errorMessage)? failed,
     required TResult orElse(),
   }) {
@@ -309,10 +277,7 @@ class _$TaskDetailStateLoading implements TaskDetailStateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(TaskDetailStateInitial value) initial,
     required TResult Function(TaskDetailStateLoading value) loading,
-    required TResult Function(TaskDetailStatesuccessAdded value) successAdded,
-    required TResult Function(TaskDetailStatesuccessEdited value) successEdited,
-    required TResult Function(TaskDetailStatesuccessDeleted value)
-        successDeleted,
+    required TResult Function(TaskDetailStateSuccess value) success,
     required TResult Function(TaskDetailStateFailed value) failed,
   }) {
     return loading(this);
@@ -323,9 +288,7 @@ class _$TaskDetailStateLoading implements TaskDetailStateLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TaskDetailStateInitial value)? initial,
     TResult? Function(TaskDetailStateLoading value)? loading,
-    TResult? Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult? Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult? Function(TaskDetailStatesuccessDeleted value)? successDeleted,
+    TResult? Function(TaskDetailStateSuccess value)? success,
     TResult? Function(TaskDetailStateFailed value)? failed,
   }) {
     return loading?.call(this);
@@ -336,9 +299,7 @@ class _$TaskDetailStateLoading implements TaskDetailStateLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskDetailStateInitial value)? initial,
     TResult Function(TaskDetailStateLoading value)? loading,
-    TResult Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult Function(TaskDetailStatesuccessDeleted value)? successDeleted,
+    TResult Function(TaskDetailStateSuccess value)? success,
     TResult Function(TaskDetailStateFailed value)? failed,
     required TResult orElse(),
   }) {
@@ -354,22 +315,20 @@ abstract class TaskDetailStateLoading implements TaskDetailState {
 }
 
 /// @nodoc
-abstract class _$$TaskDetailStatesuccessAddedCopyWith<$Res> {
-  factory _$$TaskDetailStatesuccessAddedCopyWith(
-          _$TaskDetailStatesuccessAdded value,
-          $Res Function(_$TaskDetailStatesuccessAdded) then) =
-      __$$TaskDetailStatesuccessAddedCopyWithImpl<$Res>;
+abstract class _$$TaskDetailStateSuccessCopyWith<$Res> {
+  factory _$$TaskDetailStateSuccessCopyWith(_$TaskDetailStateSuccess value,
+          $Res Function(_$TaskDetailStateSuccess) then) =
+      __$$TaskDetailStateSuccessCopyWithImpl<$Res>;
   @useResult
   $Res call({Task task});
 }
 
 /// @nodoc
-class __$$TaskDetailStatesuccessAddedCopyWithImpl<$Res>
-    extends _$TaskDetailStateCopyWithImpl<$Res, _$TaskDetailStatesuccessAdded>
-    implements _$$TaskDetailStatesuccessAddedCopyWith<$Res> {
-  __$$TaskDetailStatesuccessAddedCopyWithImpl(
-      _$TaskDetailStatesuccessAdded _value,
-      $Res Function(_$TaskDetailStatesuccessAdded) _then)
+class __$$TaskDetailStateSuccessCopyWithImpl<$Res>
+    extends _$TaskDetailStateCopyWithImpl<$Res, _$TaskDetailStateSuccess>
+    implements _$$TaskDetailStateSuccessCopyWith<$Res> {
+  __$$TaskDetailStateSuccessCopyWithImpl(_$TaskDetailStateSuccess _value,
+      $Res Function(_$TaskDetailStateSuccess) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -377,7 +336,7 @@ class __$$TaskDetailStatesuccessAddedCopyWithImpl<$Res>
   $Res call({
     Object? task = null,
   }) {
-    return _then(_$TaskDetailStatesuccessAdded(
+    return _then(_$TaskDetailStateSuccess(
       null == task
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
@@ -388,22 +347,22 @@ class __$$TaskDetailStatesuccessAddedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TaskDetailStatesuccessAdded implements TaskDetailStatesuccessAdded {
-  const _$TaskDetailStatesuccessAdded(this.task);
+class _$TaskDetailStateSuccess implements TaskDetailStateSuccess {
+  const _$TaskDetailStateSuccess(this.task);
 
   @override
   final Task task;
 
   @override
   String toString() {
-    return 'TaskDetailState.successAdded(task: $task)';
+    return 'TaskDetailState.success(task: $task)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TaskDetailStatesuccessAdded &&
+            other is _$TaskDetailStateSuccess &&
             (identical(other.task, task) || other.task == task));
   }
 
@@ -413,21 +372,19 @@ class _$TaskDetailStatesuccessAdded implements TaskDetailStatesuccessAdded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TaskDetailStatesuccessAddedCopyWith<_$TaskDetailStatesuccessAdded>
-      get copyWith => __$$TaskDetailStatesuccessAddedCopyWithImpl<
-          _$TaskDetailStatesuccessAdded>(this, _$identity);
+  _$$TaskDetailStateSuccessCopyWith<_$TaskDetailStateSuccess> get copyWith =>
+      __$$TaskDetailStateSuccessCopyWithImpl<_$TaskDetailStateSuccess>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Task task) successAdded,
-    required TResult Function(Task task) successEdited,
-    required TResult Function(Task task) successDeleted,
+    required TResult Function(Task task) success,
     required TResult Function(String errorMessage) failed,
   }) {
-    return successAdded(task);
+    return success(task);
   }
 
   @override
@@ -435,12 +392,10 @@ class _$TaskDetailStatesuccessAdded implements TaskDetailStatesuccessAdded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Task task)? successAdded,
-    TResult? Function(Task task)? successEdited,
-    TResult? Function(Task task)? successDeleted,
+    TResult? Function(Task task)? success,
     TResult? Function(String errorMessage)? failed,
   }) {
-    return successAdded?.call(task);
+    return success?.call(task);
   }
 
   @override
@@ -448,14 +403,12 @@ class _$TaskDetailStatesuccessAdded implements TaskDetailStatesuccessAdded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Task task)? successAdded,
-    TResult Function(Task task)? successEdited,
-    TResult Function(Task task)? successDeleted,
+    TResult Function(Task task)? success,
     TResult Function(String errorMessage)? failed,
     required TResult orElse(),
   }) {
-    if (successAdded != null) {
-      return successAdded(task);
+    if (success != null) {
+      return success(task);
     }
     return orElse();
   }
@@ -465,13 +418,10 @@ class _$TaskDetailStatesuccessAdded implements TaskDetailStatesuccessAdded {
   TResult map<TResult extends Object?>({
     required TResult Function(TaskDetailStateInitial value) initial,
     required TResult Function(TaskDetailStateLoading value) loading,
-    required TResult Function(TaskDetailStatesuccessAdded value) successAdded,
-    required TResult Function(TaskDetailStatesuccessEdited value) successEdited,
-    required TResult Function(TaskDetailStatesuccessDeleted value)
-        successDeleted,
+    required TResult Function(TaskDetailStateSuccess value) success,
     required TResult Function(TaskDetailStateFailed value) failed,
   }) {
-    return successAdded(this);
+    return success(this);
   }
 
   @override
@@ -479,12 +429,10 @@ class _$TaskDetailStatesuccessAdded implements TaskDetailStatesuccessAdded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TaskDetailStateInitial value)? initial,
     TResult? Function(TaskDetailStateLoading value)? loading,
-    TResult? Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult? Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult? Function(TaskDetailStatesuccessDeleted value)? successDeleted,
+    TResult? Function(TaskDetailStateSuccess value)? success,
     TResult? Function(TaskDetailStateFailed value)? failed,
   }) {
-    return successAdded?.call(this);
+    return success?.call(this);
   }
 
   @override
@@ -492,351 +440,25 @@ class _$TaskDetailStatesuccessAdded implements TaskDetailStatesuccessAdded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskDetailStateInitial value)? initial,
     TResult Function(TaskDetailStateLoading value)? loading,
-    TResult Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult Function(TaskDetailStatesuccessDeleted value)? successDeleted,
+    TResult Function(TaskDetailStateSuccess value)? success,
     TResult Function(TaskDetailStateFailed value)? failed,
     required TResult orElse(),
   }) {
-    if (successAdded != null) {
-      return successAdded(this);
+    if (success != null) {
+      return success(this);
     }
     return orElse();
   }
 }
 
-abstract class TaskDetailStatesuccessAdded implements TaskDetailState {
-  const factory TaskDetailStatesuccessAdded(final Task task) =
-      _$TaskDetailStatesuccessAdded;
+abstract class TaskDetailStateSuccess implements TaskDetailState {
+  const factory TaskDetailStateSuccess(final Task task) =
+      _$TaskDetailStateSuccess;
 
   Task get task;
   @JsonKey(ignore: true)
-  _$$TaskDetailStatesuccessAddedCopyWith<_$TaskDetailStatesuccessAdded>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$TaskDetailStatesuccessEditedCopyWith<$Res> {
-  factory _$$TaskDetailStatesuccessEditedCopyWith(
-          _$TaskDetailStatesuccessEdited value,
-          $Res Function(_$TaskDetailStatesuccessEdited) then) =
-      __$$TaskDetailStatesuccessEditedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Task task});
-}
-
-/// @nodoc
-class __$$TaskDetailStatesuccessEditedCopyWithImpl<$Res>
-    extends _$TaskDetailStateCopyWithImpl<$Res, _$TaskDetailStatesuccessEdited>
-    implements _$$TaskDetailStatesuccessEditedCopyWith<$Res> {
-  __$$TaskDetailStatesuccessEditedCopyWithImpl(
-      _$TaskDetailStatesuccessEdited _value,
-      $Res Function(_$TaskDetailStatesuccessEdited) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? task = null,
-  }) {
-    return _then(_$TaskDetailStatesuccessEdited(
-      null == task
-          ? _value.task
-          : task // ignore: cast_nullable_to_non_nullable
-              as Task,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$TaskDetailStatesuccessEdited implements TaskDetailStatesuccessEdited {
-  const _$TaskDetailStatesuccessEdited(this.task);
-
-  @override
-  final Task task;
-
-  @override
-  String toString() {
-    return 'TaskDetailState.successEdited(task: $task)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TaskDetailStatesuccessEdited &&
-            (identical(other.task, task) || other.task == task));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, task);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TaskDetailStatesuccessEditedCopyWith<_$TaskDetailStatesuccessEdited>
-      get copyWith => __$$TaskDetailStatesuccessEditedCopyWithImpl<
-          _$TaskDetailStatesuccessEdited>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Task task) successAdded,
-    required TResult Function(Task task) successEdited,
-    required TResult Function(Task task) successDeleted,
-    required TResult Function(String errorMessage) failed,
-  }) {
-    return successEdited(task);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Task task)? successAdded,
-    TResult? Function(Task task)? successEdited,
-    TResult? Function(Task task)? successDeleted,
-    TResult? Function(String errorMessage)? failed,
-  }) {
-    return successEdited?.call(task);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Task task)? successAdded,
-    TResult Function(Task task)? successEdited,
-    TResult Function(Task task)? successDeleted,
-    TResult Function(String errorMessage)? failed,
-    required TResult orElse(),
-  }) {
-    if (successEdited != null) {
-      return successEdited(task);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TaskDetailStateInitial value) initial,
-    required TResult Function(TaskDetailStateLoading value) loading,
-    required TResult Function(TaskDetailStatesuccessAdded value) successAdded,
-    required TResult Function(TaskDetailStatesuccessEdited value) successEdited,
-    required TResult Function(TaskDetailStatesuccessDeleted value)
-        successDeleted,
-    required TResult Function(TaskDetailStateFailed value) failed,
-  }) {
-    return successEdited(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TaskDetailStateInitial value)? initial,
-    TResult? Function(TaskDetailStateLoading value)? loading,
-    TResult? Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult? Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult? Function(TaskDetailStatesuccessDeleted value)? successDeleted,
-    TResult? Function(TaskDetailStateFailed value)? failed,
-  }) {
-    return successEdited?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TaskDetailStateInitial value)? initial,
-    TResult Function(TaskDetailStateLoading value)? loading,
-    TResult Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult Function(TaskDetailStatesuccessDeleted value)? successDeleted,
-    TResult Function(TaskDetailStateFailed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (successEdited != null) {
-      return successEdited(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class TaskDetailStatesuccessEdited implements TaskDetailState {
-  const factory TaskDetailStatesuccessEdited(final Task task) =
-      _$TaskDetailStatesuccessEdited;
-
-  Task get task;
-  @JsonKey(ignore: true)
-  _$$TaskDetailStatesuccessEditedCopyWith<_$TaskDetailStatesuccessEdited>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$TaskDetailStatesuccessDeletedCopyWith<$Res> {
-  factory _$$TaskDetailStatesuccessDeletedCopyWith(
-          _$TaskDetailStatesuccessDeleted value,
-          $Res Function(_$TaskDetailStatesuccessDeleted) then) =
-      __$$TaskDetailStatesuccessDeletedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Task task});
-}
-
-/// @nodoc
-class __$$TaskDetailStatesuccessDeletedCopyWithImpl<$Res>
-    extends _$TaskDetailStateCopyWithImpl<$Res, _$TaskDetailStatesuccessDeleted>
-    implements _$$TaskDetailStatesuccessDeletedCopyWith<$Res> {
-  __$$TaskDetailStatesuccessDeletedCopyWithImpl(
-      _$TaskDetailStatesuccessDeleted _value,
-      $Res Function(_$TaskDetailStatesuccessDeleted) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? task = null,
-  }) {
-    return _then(_$TaskDetailStatesuccessDeleted(
-      null == task
-          ? _value.task
-          : task // ignore: cast_nullable_to_non_nullable
-              as Task,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$TaskDetailStatesuccessDeleted implements TaskDetailStatesuccessDeleted {
-  const _$TaskDetailStatesuccessDeleted(this.task);
-
-  @override
-  final Task task;
-
-  @override
-  String toString() {
-    return 'TaskDetailState.successDeleted(task: $task)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TaskDetailStatesuccessDeleted &&
-            (identical(other.task, task) || other.task == task));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, task);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TaskDetailStatesuccessDeletedCopyWith<_$TaskDetailStatesuccessDeleted>
-      get copyWith => __$$TaskDetailStatesuccessDeletedCopyWithImpl<
-          _$TaskDetailStatesuccessDeleted>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Task task) successAdded,
-    required TResult Function(Task task) successEdited,
-    required TResult Function(Task task) successDeleted,
-    required TResult Function(String errorMessage) failed,
-  }) {
-    return successDeleted(task);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Task task)? successAdded,
-    TResult? Function(Task task)? successEdited,
-    TResult? Function(Task task)? successDeleted,
-    TResult? Function(String errorMessage)? failed,
-  }) {
-    return successDeleted?.call(task);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Task task)? successAdded,
-    TResult Function(Task task)? successEdited,
-    TResult Function(Task task)? successDeleted,
-    TResult Function(String errorMessage)? failed,
-    required TResult orElse(),
-  }) {
-    if (successDeleted != null) {
-      return successDeleted(task);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TaskDetailStateInitial value) initial,
-    required TResult Function(TaskDetailStateLoading value) loading,
-    required TResult Function(TaskDetailStatesuccessAdded value) successAdded,
-    required TResult Function(TaskDetailStatesuccessEdited value) successEdited,
-    required TResult Function(TaskDetailStatesuccessDeleted value)
-        successDeleted,
-    required TResult Function(TaskDetailStateFailed value) failed,
-  }) {
-    return successDeleted(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TaskDetailStateInitial value)? initial,
-    TResult? Function(TaskDetailStateLoading value)? loading,
-    TResult? Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult? Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult? Function(TaskDetailStatesuccessDeleted value)? successDeleted,
-    TResult? Function(TaskDetailStateFailed value)? failed,
-  }) {
-    return successDeleted?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TaskDetailStateInitial value)? initial,
-    TResult Function(TaskDetailStateLoading value)? loading,
-    TResult Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult Function(TaskDetailStatesuccessDeleted value)? successDeleted,
-    TResult Function(TaskDetailStateFailed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (successDeleted != null) {
-      return successDeleted(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class TaskDetailStatesuccessDeleted implements TaskDetailState {
-  const factory TaskDetailStatesuccessDeleted(final Task task) =
-      _$TaskDetailStatesuccessDeleted;
-
-  Task get task;
-  @JsonKey(ignore: true)
-  _$$TaskDetailStatesuccessDeletedCopyWith<_$TaskDetailStatesuccessDeleted>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$TaskDetailStateSuccessCopyWith<_$TaskDetailStateSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -907,9 +529,7 @@ class _$TaskDetailStateFailed implements TaskDetailStateFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(Task task) successAdded,
-    required TResult Function(Task task) successEdited,
-    required TResult Function(Task task) successDeleted,
+    required TResult Function(Task task) success,
     required TResult Function(String errorMessage) failed,
   }) {
     return failed(errorMessage);
@@ -920,9 +540,7 @@ class _$TaskDetailStateFailed implements TaskDetailStateFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(Task task)? successAdded,
-    TResult? Function(Task task)? successEdited,
-    TResult? Function(Task task)? successDeleted,
+    TResult? Function(Task task)? success,
     TResult? Function(String errorMessage)? failed,
   }) {
     return failed?.call(errorMessage);
@@ -933,9 +551,7 @@ class _$TaskDetailStateFailed implements TaskDetailStateFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(Task task)? successAdded,
-    TResult Function(Task task)? successEdited,
-    TResult Function(Task task)? successDeleted,
+    TResult Function(Task task)? success,
     TResult Function(String errorMessage)? failed,
     required TResult orElse(),
   }) {
@@ -950,10 +566,7 @@ class _$TaskDetailStateFailed implements TaskDetailStateFailed {
   TResult map<TResult extends Object?>({
     required TResult Function(TaskDetailStateInitial value) initial,
     required TResult Function(TaskDetailStateLoading value) loading,
-    required TResult Function(TaskDetailStatesuccessAdded value) successAdded,
-    required TResult Function(TaskDetailStatesuccessEdited value) successEdited,
-    required TResult Function(TaskDetailStatesuccessDeleted value)
-        successDeleted,
+    required TResult Function(TaskDetailStateSuccess value) success,
     required TResult Function(TaskDetailStateFailed value) failed,
   }) {
     return failed(this);
@@ -964,9 +577,7 @@ class _$TaskDetailStateFailed implements TaskDetailStateFailed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TaskDetailStateInitial value)? initial,
     TResult? Function(TaskDetailStateLoading value)? loading,
-    TResult? Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult? Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult? Function(TaskDetailStatesuccessDeleted value)? successDeleted,
+    TResult? Function(TaskDetailStateSuccess value)? success,
     TResult? Function(TaskDetailStateFailed value)? failed,
   }) {
     return failed?.call(this);
@@ -977,9 +588,7 @@ class _$TaskDetailStateFailed implements TaskDetailStateFailed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TaskDetailStateInitial value)? initial,
     TResult Function(TaskDetailStateLoading value)? loading,
-    TResult Function(TaskDetailStatesuccessAdded value)? successAdded,
-    TResult Function(TaskDetailStatesuccessEdited value)? successEdited,
-    TResult Function(TaskDetailStatesuccessDeleted value)? successDeleted,
+    TResult Function(TaskDetailStateSuccess value)? success,
     TResult Function(TaskDetailStateFailed value)? failed,
     required TResult orElse(),
   }) {

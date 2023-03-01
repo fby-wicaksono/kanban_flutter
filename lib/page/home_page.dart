@@ -55,7 +55,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 
   void _pushToAddTaskPage() {
-    context.router.push(TaskDetailRoute());
+    context.router.push(TaskEditRoute());
   }
 }
 

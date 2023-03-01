@@ -10,39 +10,36 @@ enum TaskStatus {
   const TaskStatus(this.statusName);
 }
 
-enum DueDateStatus {
-  notPassedDueDate,
-  dueDateToday,
-  passedDueDate
-}
-
 class Tasks extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get title => text()();
   TextColumn get label => text().withLength(max: 20)();
   TextColumn get description => text()();
   TextColumn get status => textEnum<TaskStatus>()();
-  DateTimeColumn get startDate => dateTime()();
-  DateTimeColumn get endDate => dateTime()();
+  DateTimeColumn get startDate => dateTime().nullable()();
+  DateTimeColumn get endDate => dateTime().nullable()();
 }
 
 extension TaskExtension on Task {
-  Duration getRemainingTime() {
-    // add 1 day to deadline to make sure correct deadline calculation
-    return endDate.add(const Duration(days: 1)).difference(DateTime.now());
-  }
+  String getElapsedTime(DateTime? dateTime) {
+    final dateToCompare = dateTime ?? DateTime.now();
 
-  DueDateStatus getDueDateStatus() {
-    final durationDifference = getRemainingTime();
+    if (startDate != null) {
+      final durationDiff = dateToCompare.difference(startDate!);
+      final stringList = [];
 
-    if (durationDifference.isNegative) {
-      return DueDateStatus.passedDueDate;
+      if (durationDiff.inDays > 0) {
+        stringList.add('${durationDiff.inDays} Days');
+      }
+
+      if (durationDiff.inHours > 0) {
+        stringList.add('${durationDiff.inHours % 24} Hours');
+      }
+
+      stringList.add('${durationDiff.inMinutes % 60} Minutes');
+      return stringList.join(', ');
     }
 
-    if (durationDifference.inDays == 0) {
-      return DueDateStatus.dueDateToday;
-    }
-
-    return DueDateStatus.notPassedDueDate;
+    return '';
   }
 }

@@ -16,7 +16,7 @@ import 'package:flutter/material.dart' as _i4;
 
 import '../data/drift_client.dart' as _i5;
 import '../page/home_page.dart' as _i1;
-import '../page/task_detail_page.dart' as _i2;
+import '../page/task_edit_page.dart' as _i2;
 
 class AppRouter extends _i3.RootStackRouter {
   AppRouter([_i4.GlobalKey<_i4.NavigatorState>? navigatorKey])
@@ -30,12 +30,12 @@ class AppRouter extends _i3.RootStackRouter {
         child: const _i1.HomePage(),
       );
     },
-    TaskDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<TaskDetailRouteArgs>(
-          orElse: () => const TaskDetailRouteArgs());
+    TaskEditRoute.name: (routeData) {
+      final args = routeData.argsAs<TaskEditRouteArgs>(
+          orElse: () => const TaskEditRouteArgs());
       return _i3.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i2.TaskDetailPage(
+        child: _i2.TaskEditPage(
           key: args.key,
           task: args.task,
         ),
@@ -56,7 +56,7 @@ class AppRouter extends _i3.RootStackRouter {
           path: '/home',
         ),
         _i3.RouteConfig(
-          TaskDetailRoute.name,
+          TaskEditRoute.name,
           path: '/addTaskPage',
         ),
       ];
@@ -75,25 +75,25 @@ class HomeRoute extends _i3.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.TaskDetailPage]
-class TaskDetailRoute extends _i3.PageRouteInfo<TaskDetailRouteArgs> {
-  TaskDetailRoute({
+/// [_i2.TaskEditPage]
+class TaskEditRoute extends _i3.PageRouteInfo<TaskEditRouteArgs> {
+  TaskEditRoute({
     _i4.Key? key,
     _i5.Task? task,
   }) : super(
-          TaskDetailRoute.name,
+          TaskEditRoute.name,
           path: '/addTaskPage',
-          args: TaskDetailRouteArgs(
+          args: TaskEditRouteArgs(
             key: key,
             task: task,
           ),
         );
 
-  static const String name = 'TaskDetailRoute';
+  static const String name = 'TaskEditRoute';
 }
 
-class TaskDetailRouteArgs {
-  const TaskDetailRouteArgs({
+class TaskEditRouteArgs {
+  const TaskEditRouteArgs({
     this.key,
     this.task,
   });
@@ -104,6 +104,6 @@ class TaskDetailRouteArgs {
 
   @override
   String toString() {
-    return 'TaskDetailRouteArgs{key: $key, task: $task}';
+    return 'TaskEditRouteArgs{key: $key, task: $task}';
   }
 }

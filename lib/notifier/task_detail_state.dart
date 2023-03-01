@@ -7,8 +7,6 @@ part 'task_detail_state.freezed.dart';
 class TaskDetailState with _$TaskDetailState {
   const factory TaskDetailState.initial() = TaskDetailStateInitial;
   const factory TaskDetailState.loading() = TaskDetailStateLoading;
-  const factory TaskDetailState.successAdded(Task task) = TaskDetailStatesuccessAdded;
-  const factory TaskDetailState.successEdited(Task task) = TaskDetailStatesuccessEdited;
-  const factory TaskDetailState.successDeleted(Task task) = TaskDetailStatesuccessDeleted;
+  const factory TaskDetailState.success(Task task) = TaskDetailStateSuccess;
   const factory TaskDetailState.failed(String errorMessage) = TaskDetailStateFailed;
 }

@@ -9,95 +9,48 @@ class TaskDetailNotifier extends StateNotifier<TaskDetailState> {
 
   final Ref ref;
 
-  void addTaskToDatabase({
-    required String title,
-    required String label,
-    required String description,
-    required TaskStatus status,
-    required DateTime? endDate,
-  }) async {
+  void updateTaskToInProgress(Task task) async {
     final repo = ref.read(taskRepoProvider);
 
     state = const TaskDetailState.loading();
 
-    if (title.isEmpty || label.isEmpty || description.isEmpty || endDate == null) {
-      state = const TaskDetailState.failed('All data must be filled');
-      return;
-    }
-
-    try {
-      final taskCompanion = TasksCompanion.insert(
-        title: title,
-        label: label,
-        description: description,
-        status: status,
-        startDate: DateTime.now(),
-        endDate: endDate,
-      );
-
-      final insertedId = await repo.addTask(taskCompanion);
-
-      state = TaskDetailState.successAdded(
-        Task(
-          id: insertedId,
-          title: title,
-          label: label,
-          description: description,
-          status: status,
-          startDate: DateTime.now(),
-          endDate: endDate,
-        ),
-      );
-    } catch (error) {
-      state = const TaskDetailState.failed('Fail to add task');
-    }
-  }
-
-  void editTask({
-    required int id,
-    required String title,
-    required String label,
-    required String description,
-    required TaskStatus status,
-    required DateTime? endDate,
-  }) async {
-    final repo = ref.read(taskRepoProvider);
-
-    state = const TaskDetailState.loading();
-
-    if (title.isEmpty || label.isEmpty || description.isEmpty || endDate == null) {
-      state = const TaskDetailState.failed('All data must be filled');
-      return;
-    }
-
-    final task = Task(
-      id: id,
-      title: title,
-      label: label,
-      description: description,
-      status: status,
+    final updatedTask = Task(
+      id: task.id,
+      title: task.title,
+      label: task.label,
+      description: task.description,
+      status: TaskStatus.inProgress,
       startDate: DateTime.now(),
-      endDate: endDate,
     );
 
     try {
-      await repo.updateTask(task);
-      state = TaskDetailState.successEdited(task);
+      await repo.updateTask(updatedTask);
+      state = TaskDetailState.success(updatedTask);
     } catch (error) {
-      state = const TaskDetailState.failed('Failed to edit task');
+      state = const TaskDetailState.failed('Failed updating task');
     }
   }
 
-  void deleteTask(Task task) async {
+  void updateTaskToCompeted(Task task) async {
     final repo = ref.read(taskRepoProvider);
 
     state = const TaskDetailState.loading();
 
+    final updatedTask = Task(
+      id: task.id,
+      title: task.title,
+      label: task.label,
+      description: task.description,
+      status: TaskStatus.completed,
+      startDate: task.startDate,
+      endDate: DateTime.now(),
+    );
+
     try {
-      await repo.deleteTask(task);
-      state = TaskDetailState.successDeleted(task);
+      await repo.updateTask(updatedTask);
+      state = TaskDetailState.success(updatedTask);
     } catch (error) {
-      state = const TaskDetailState.failed('Failed to delete task');
+      state = const TaskDetailState.failed('Failed updating task');
     }
   }
 }
