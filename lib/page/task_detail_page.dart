@@ -157,7 +157,7 @@ class _AddTaskPageState extends ConsumerState<TaskDetailPage> {
             ),
             const SizedBox(height: 20.0),
             const GeneralInputLabel(label: 'Status'),
-            _StatusOptions(selectedStatus: selectedStatus),
+            StatusOptions(selectedStatus: selectedStatus),
             const SizedBox(height: 40.0),
             if (_isCreateNewTask)
               ElevatedButton(
@@ -222,8 +222,8 @@ class _AddTaskPageState extends ConsumerState<TaskDetailPage> {
   }
 }
 
-class _StatusOptions extends ConsumerWidget {
-  const _StatusOptions({
+class StatusOptions extends ConsumerWidget {
+  const StatusOptions({
     Key? key,
     required this.selectedStatus,
   }) : super(key: key);
