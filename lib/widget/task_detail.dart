@@ -8,6 +8,7 @@ import 'package:kanban_flutter_sample/notifier/task_detail_state.dart';
 import 'package:kanban_flutter_sample/provider/task_detail_provider.dart';
 import 'package:kanban_flutter_sample/provider/task_list_provider.dart';
 import 'package:kanban_flutter_sample/routing/app_router.gr.dart';
+import 'package:kanban_flutter_sample/util/app_helper.dart';
 import 'package:kanban_flutter_sample/widget/general_input_label.dart';
 
 class TaskDetail extends ConsumerStatefulWidget {
@@ -77,7 +78,7 @@ class _TaskDetailState extends ConsumerState<TaskDetail> {
                 const SizedBox(height: 10.0),
                 LabelWithValue(
                   label: 'Date Completed',
-                  value: _formattedDateText(widget.task.endDate),
+                  value: formattedDateText(widget.task.endDate),
                 ),
               ],
             const SizedBox(height: 30.0),
@@ -123,10 +124,6 @@ class _TaskDetailState extends ConsumerState<TaskDetail> {
     } else if (widget.task.status == TaskStatus.inProgress) {
       ref.read(taskDetailNotifierProvider.notifier).updateTaskToCompeted(widget.task);
     }
-  }
-
-  String _formattedDateText(DateTime? dateTime) {
-    return dateTime != null ? DateFormat('EEE, MMM d, h:mm a').format(dateTime) : '';
   }
 }
 

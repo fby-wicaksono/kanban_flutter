@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kanban_flutter_sample/data/entity/tasks.dart';
 import 'package:kanban_flutter_sample/page/task_list_page.dart';
+import 'package:kanban_flutter_sample/provider/home_provider.dart';
 import 'package:kanban_flutter_sample/provider/task_list_provider.dart';
 import 'package:kanban_flutter_sample/routing/app_router.gr.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({
@@ -25,6 +27,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     ref.watch(taskNotifierProvider);
+    ref.watch(csvNotifierProvider);
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -33,7 +36,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       ),
       body: Column(
         children: [
-          const Header(),
+          Header(onGenerateCsvTapped: _generateCsv),
           Expanded(
             child: PageView(
               physics: const BouncingScrollPhysics(),
@@ -57,12 +60,19 @@ class _HomePageState extends ConsumerState<HomePage> {
   void _pushToAddTaskPage() {
     context.router.push(TaskEditRoute());
   }
+
+  void _generateCsv() async {
+    ref.read(csvNotifierProvider.notifier).generateCsvFile();
+  }
 }
 
 class Header extends ConsumerWidget {
   const Header({
     Key? key,
+    required this.onGenerateCsvTapped,
   }) : super(key: key);
+
+  final VoidCallback onGenerateCsvTapped;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -93,7 +103,11 @@ class Header extends ConsumerWidget {
                         const SizedBox(height: 2.0),
                         Row(
                           children: [
-                            const Icon(Icons.notifications, color: Colors.blue, size: 14.0,),
+                            const Icon(
+                              Icons.notifications,
+                              color: Colors.blue,
+                              size: 14.0,
+                            ),
                             const SizedBox(width: 2.0),
                             Expanded(
                               child: Text(
@@ -107,7 +121,7 @@ class Header extends ConsumerWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: onGenerateCsvTapped,
                     icon: const Icon(Icons.download),
                   ),
                 ],
